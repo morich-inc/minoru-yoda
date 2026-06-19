@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>依田 稔 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>依田 稔 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社ベネッセコーポレーション</a>
+  <a href="#k2">2. 株式会社バリューＨＲ</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">デジタル広告マネージャー</span><span class="badge badge-blue">非上場（MBO済）</span></div>
+  <div class="co-name">株式会社ベネッセコーポレーション</div>
+  <div class="co-url"><a href="https://www.benesse.co.jp/benesseinfo/" target="_blank">https://www.benesse.co.jp/benesseinfo/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都多摩市落合１丁目３４／東京都新宿区西新宿2丁目1-1 新宿三井ビルディング</td></tr><tr><th>上場区分</th><td>非上場（2023年末にMBO実施）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>2023年末にMBOを実施し、今後、『教育』業界をアップデートすることを推進。株主を気にすることなく、改革・戦略を進めていくことになりました。</li><li>既存事業のテコ入れや学校事業、社会人教育事業の事業開発・プロダクトマーケティングやデジタルマーケティング等の全方位で幹部人材の採用を強化していきます。</li><li>海外に通用するコンテンツ・ブランドも多数M&Aなども積極的に推進されています。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">ベネッセグループで『教育・生活』領域を担う中核事業会社です。幼児を対象にした『こどもちゃれんじ』、小学生から高校生までを対象にした『進研ゼミ』等のサービスを展開し、年齢や成長レベルに合わせた「学び」の機会を提供しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ベネッセグループで『教育・生活』領域を担う中核事業会社です。幼児を対象にした『こどもちゃれんじ』、小学生から高校生までを対象にした『進研ゼミ』等のサービスを展開し、年齢や成長レベルに合わせた「学び」の機会を提供しています。</p><p>現在は進研ゼミだけではなく、「教育の全方位」であらゆるお客様に対して事業を展開しています。また教育事業のみならず、妊娠・出産・育児などの生活領域、さらにはベネッセグループに視野を広げると、介護・保育など人生のあらゆるステージにいらっしゃるお客様へのサービス提供を行っています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【進研ゼミ領域 横断】デジタル広告マネージャー</div>
+          <div class="job-preview">『進研ゼミ』『こどもちゃれんじ』のデジタル広告領域を牽引するマネージャーポジション。大規模予算を持ちROI向上・マーケティング変革をリード。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【採用背景】</strong></p><p>昨今、教育は大きな転換点を迎えています。AIやデジタル技術が当たり前となり、異業種からの参入も加速。子どもたちの学び方そのものが、これまでの常識を超えて変わろうとしています。ベネッセもまた、この変化に真正面から挑んでいます。</p><p>『進研ゼミ』『こどもちゃれんじ』の大規模なデジタルシフトを推進し、AIやデータを活用して、一人ひとりに最適化された学びを届ける新しい仕組みづくりに挑戦中です。経営体制も変革が進み、現在のマーケティング組織は副社長 山口文洋が自ら陣頭指揮をとっています。彼のリーダーシップのもと、私たちは従来のやり方を一度リセットし、マーケティングの変革を本気で進めています。組織には多くの中途入社メンバーが加わり、新しいカルチャーを自らの手でつくりあげている真っ最中です。</p><p>▶プレスリリース（2026年3月）</p><ul><li>進研ゼミ高校講座：https://prtimes.jp/main/html/rd/p/000001448.000000120.html</li><li>進研ゼミ小学講座：https://prtimes.jp/main/html/rd/p/000001449.000000120.html</li></ul><p><strong>【ポジション概要】</strong></p><p>本ポジションでは、『進研ゼミ』『こどもちゃれんじ』のデジタル広告マネージャーとして大規模な予算を持ち、デジタル広告領域の拡大とROI向上の実現に向けてマーケティング変革をリードいただくことが期待されております。国内有数のブランド力を背景に、社内のナレッジやリソースを最大限活用しながらも、大胆かつ柔軟に戦略を再設計していただきます。</p><p><strong>【具体的な業務】</strong></p><ul><li>デジタル広告領域（SEOやアフィリエイト含）における戦略設計、企画立案</li><li>最適な予算配分とROI最大化設計</li><li>データ分析（関係部門との調整）</li><li>代理店コントロール</li><li>チームマネジメント（約10名）および体制構築/メンバー育成</li></ul><p><strong>【組織について】</strong></p><p>本ポジションでは、『進研ゼミ』『こどもちゃれんじ』を扱う家庭学習カンパニーのマーケティング横断本部に所属いただきます。組織は担当領域（小学生、中高生など）によって分かれておりますが、今回所属いただく「デジタル＆CRMマーケティング部」は横断組織となっており、その中でもデジタル広告に特化した約10名のチームにおいて、マネジメントをお任せいたします。特にデジタル領域においては中途入社の即戦力人財が多く、代理店や事業会社などそれぞれのバックグラウンドを活かしながらマーケティング変革を推進しています。</p><p><strong>【キャリアパス】</strong></p><p>入社後まずはデジタル広告領域でのご経験を積んでいただくと同時に、社内にある複数のプロダクトのご理解を進めていただきます。その上で、ご自身の経験を活かしデジタル広告領域の幅を広げていただいたり、デジタルマーケティングを主軸とした新しい役割に挑戦いただいたり、上長と対話をしながら次のステップをご検討いただきます。将来的にはご経験・ご希望に応じて幅広いキャリアを歩んでいただくことが可能です。</p><p>■入社3～5年後のキャリアパス例</p><ul><li>複数サービスのデジタル広告責任者</li><li>CRM/WEBサイト等も含めたデジタルマーケティング全般の戦略設計/マネジメント</li><li>マス/オンオフ統合マーケティング全般の戦略設計/マネジメント</li></ul><p><strong>【必須要件】</strong></p><ul><li><span class='tag tag-must'>MUST</span> デジタル広告領域において自ら運用したご経験3年以上（代理店・事業会社問わず）</li><li><span class='tag tag-must'>MUST</span> 事業会社のデジタルマーケティング領域において数字責任を持ち、KPI改善や売上拡大に貢献したご経験5年以上</li><li><span class='tag tag-must'>MUST</span> チームマネジメント（5名以上）またはプロジェクトリードのご経験</li></ul><p><strong>【歓迎要件】</strong></p><ul><li><span class='tag tag-want'>WANT</span> デジタル広告における包括的な運用戦略や運用設計などのご経験（リスティング、ディスプレイ、SNS広告等の主要媒体だけではなくSEOやアフィリエイトを含む）</li><li><span class='tag tag-want'>WANT</span> 大規模B2Cサービスにおける新規獲得のグロース経験</li><li><span class='tag tag-want'>WANT</span> AdTech・計測基盤の構築・活用知識</li><li><span class='tag tag-want'>WANT</span> 事業会社における「第二の創業」や「組織変革」への参画経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>ベネッセの「よく生きる」の企業理念に共感し、事業成長に貢献することに粘り強く・意欲を持って取り組んでいただける方</li><li>経営陣、各部門やパートナー等、複数の関係者とコミュニケーションをとって当事者意識・責任感を持って、自律的に成果を創出できる方</li><li>変化の激しい組織状況においても、主体的な提案を行いながら課題解決に取り組める方</li></ul><p><strong>【年収・給与】</strong></p><p>9,000,000円 ～ 12,000,000円／月収＋賞与（年2回）※経験・スキルを考慮し、当社規定により支給</p><p><strong>【諸手当・福利厚生】</strong></p><ul><li>通勤手当、時間外手当／裁量労働手当、カフェテリアプラン</li><li>退職金制度あり</li><li>健康保険、厚生年金保険、雇用保険、労災保険等</li><li>カフェテリアプラン（住宅補助／出産・育児/子どもの教育・療育／介護／医療・健康増進／財産形成／ボランティア活動費補助など）</li><li>従業員持ち株会、確定給付年金、確定拠出型年金、定期健康診断</li><li>能力開発支援：セルフラーニング用プラットフォーム（Udemy Business）の利用、能力開発ポイント、DX資格取得支援制度、公募制度、青紙制度</li></ul><p><strong>【勤務地】</strong></p><p>東京都多摩市落合１丁目３４／東京都新宿区西新宿2丁目1-1 新宿三井ビルディング</p><p>在宅勤務と出社を組み合わせたハイブリット勤務で出社頻度は週一程度の運用となっております。※原則火曜に多摩出社、こどもちゃれんじ担当の場合のみ火曜・木曜に新宿出社</p><p><strong>【休日・休暇】</strong></p><p>土日祝、夏期休暇（6/1～9/30の間で連続して3日）、年末年始（12/30～1/4）、リスキル休暇（年最大3日、有休適用）、他</p><p><strong>【勤務時間】</strong></p><p>9:30～17:30、スーパーフレックス制／裁量労働制 ※1日の所定労働時間：7時間</p>
+        <div class="meta-pills"><span class="pill">📍 東京（多摩・新宿）</span><span class="pill">🏠 ハイブリッド勤務（週1出社程度）</span><span class="pill">💰 900万円〜1200万円</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.benesse.co.jp/benesseinfo/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">営業企画／マーケティング マネージャー（副部長）</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社バリューＨＲ</div>
+  <div class="co-url"><a href="https://www.valuehr.com/" target="_blank">https://www.valuehr.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>設立</th><td>2001年</td></tr><tr><th>従業員数</th><td>970名程度（2025年時点、同年200名増員中）</td></tr><tr><th>上場区分</th><td>東証プライム市場</td></tr><tr><th>売上</th><td>100億円突破（前年比120％成長）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li><strong>①伴走型の提案スタイル：</strong>売り切りで終わるのではなく、お客様と長期間歩調を合わせて課題解決をサポート。自由度の高いカスタマイズで最適なソリューション提供が可能。</li><li><strong>②顧客からの直接的な「ありがとう」：</strong>目に見える成果・効果を出し、お客様に喜ばれる機会が豊富。ダイレクトな感謝をモチベーションに日々取り組める。</li><li><strong>③カスタマイズで築く営業の価値：</strong>ファーストコールから継続支援まで、一貫して信頼を積み上げることができる。企業ごとのニーズを深掘りし、営業だからこそできる提案力を発揮できる。</li><li><strong>④成長し続ける健康領域：</strong>健康経営はトレンドかつ社会的ニーズが高く、業界として衰退リスクが低い。長期的に安定したマーケットで専門性を活かせる。</li><li>社員一人ひとりの健康を重要視するカルチャーを社内でも実践し、経済産業省と東京証券取引所が共同で選定する「健康経営銘柄2025」に4度目の選定、さらに「健康経営優良法人2025（ホワイト500）」に8度目の認定という高い評価を得ています。</li><li>前年比120％成長で売上は100億突破、現在社員数は970名ほどで2025年だけで200名の社員が増員され、急拡大中！</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2001年設立。2013年に東証マザーズへ上場し、市場再編に伴い東証プライム市場へ移行。健康保険組合向けBPOおよび健康管理サービスを中核とする企業です。健診予約代行、特定保健指導、健康データ管理、健康ポータルサイト運営などを展開し、企業や健康保険組合の健康管理業務をワンストップで支援しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2001年設立。2013年に東証マザーズへ上場し、市場再編に伴い東証プライム市場へ移行。健康保険組合向けBPOおよび健康管理サービスを中核とする企業です。健診予約代行、特定保健指導、健康データ管理、健康ポータルサイト運営などを展開し、企業や健康保険組合の健康管理業務をワンストップで支援しています。</p><p>大手監査法人グループの健康保険組合設立支援から事業をスタート。「健康情報のデジタル化と健康管理のインフラ企業」を掲げ、自社開発の健康管理プラットフォーム「バリューカフェテリア®システム」を提供。企業・健康保険組合・健診機関・個人をつなぐ基盤として、ユーザー数300万人、導入企業5万社超へと成長しています。</p><p>昨年度には売上100億円を突破し、前年比20％成長と堅調に拡大。全国4,000箇所以上の健診機関ネットワークを有し、日本生命、大同生命、東京海上、大和総研などとの業務・資本提携を通じて、中小企業向け健康経営支援や営業基盤も強化しています。</p><p>大手監査法人系（Big4）や世界的IT企業（GAFA）の日本法人、さらには国内の伝統的な大企業など、名だたるエンタープライズ企業からの厚い信頼を獲得し続けている一方で、営業現場ではチームを牽引する副本部長に業務が集中してしまうといった課題も生まれています。</p><p><strong>代表取締役社長　藤田美智雄氏</strong><br>1960年生まれ。国際商科大（現東京国際大）商学部を卒業後、アーサー・アンダーセン会計事務所（現あずさ監査法人）に入社し、人事部で採用などを担当。外資系証券会社などを経て、平成１３年７月にバリューＨＲを設立。２８年１２月に東証１部に上場し、現職。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 営業企画／マーケティング　マネージャー（副部長）</div>
+          <div class="job-preview">東証プライム上場×健康経営優良法人ホワイト500認定企業。新設の営業企画部にて、営業戦略立案から仕組み化・アライアンス企画まで一気通貫で推進するマネージャーポジション。</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【ミッション】</strong></p><p>営業現場と密に連携しながら、属人的になりがちな営業活動を標準化・可視化し、再現性の高い営業モデルを構築することが本ポジションのミッションです。あわせて、パートナー企業との連携や新たな販売スキームの企画を通じて、事業成長につながる新たな機会創出にも携わっていただきます。営業本部の中核として、戦略立案だけでなく、現場への落とし込み・運用改善・社内外調整まで一気通貫で推進いただくことを期待しています。</p><p><strong>【ポジションの魅力】</strong></p><ul><li>新設部署の立ち上げメンバーとして、営業企画機能の構築に関われる</li><li>営業戦略の立案にとどまらず、現場運用・改善まで一気通貫で推進できる</li><li>提案力強化、案件管理高度化、営業ナレッジ蓄積など、営業組織全体の変革に直接関わることができる</li><li>パートナー企業との連携や新サービス企画など、事業開発的なテーマにも挑戦できる</li><li>ヘルスケア領域において、事業成長と社会的意義の両立を実感できる</li></ul><p><strong>【業務内容】</strong></p><p>ご経験・ご志向に応じて、以下の業務を幅広くお任せします。</p><p>①営業戦略・営業推進</p><ul><li>営業戦略・営業施策の立案および実行支援</li><li>営業提案資料の設計・作成（ストーリー設計、標準提案書テンプレート整備）</li><li>営業ナレッジの収集・体系化・運用（提案事例、トークスクリプト、成功パターンの整理）</li><li>Kintone等を活用した営業プロセス・案件管理の設計、運用、改善</li><li>市場・競合分析に基づくポジショニング検討、営業仮説の立案</li><li>営業成果の可視化、課題抽出、改善施策の企画</li></ul><p>②販促・周辺施策</p><ul><li>販促・広報施策の企画推進（Webマーケティング、メルマガ企画運用、セミナー企画運営 等）</li><li>システム改善における要件整理、優先順位付け、社内外調整</li></ul><p>③アライアンス・事業開発領域</p><ul><li>パートナー企業とのアライアンス戦略立案</li><li>業務提携スキームの企画、推進、運用設計</li><li>パートナー企業向け提案資料の設計・作成</li><li>商品・サービスの価格戦略、提供スキームの企画</li><li>新規商品・サービスの企画開発</li><li>社内関係部門を巻き込んだ提携案件の推進、調整</li></ul><p><strong>【必須スキル】</strong></p><ul><li><span class='tag tag-must'>MUST</span> 事業会社における営業企画、営業推進、事業企画、経営企画、アライアンス企画のいずれかの実務経験</li><li><span class='tag tag-must'>MUST</span> BtoBビジネスにおける施策立案、業務改善、または事業推進の経験</li><li><span class='tag tag-must'>MUST</span> PowerPoint／Excelを用いた資料作成スキル</li><li><span class='tag tag-must'>MUST</span> 社内外の関係者を巻き込んだプロジェクト推進経験</li></ul><p><strong>【歓迎スキル】</strong></p><ul><li><span class='tag tag-want'>WANT</span> SFA、MA、Kintone等の導入・運用・改善経験</li><li><span class='tag tag-want'>WANT</span> 保険、ヘルスケア、SaaSいずれかの業界経験</li><li><span class='tag tag-want'>WANT</span> アライアンス、代理店ビジネス、OEM等の企画・運営経験</li><li><span class='tag tag-want'>WANT</span> 新規商品・サービス企画開発の経験</li><li><span class='tag tag-want'>WANT</span> 営業提案資料や営業標準ツールの整備経験</li><li><span class='tag tag-want'>WANT</span> Webマーケティング、販促企画、セミナー運営等の経験</li><li><span class='tag tag-want'>WANT</span> ITシステムの要件定義、開発ディレクション経験</li></ul><p><strong>【求める人物像】</strong></p><ul><li>営業を仕組みで強くすることに興味がある方</li><li>戦略だけでなく、現場への落とし込みや運用改善まで担いたい方</li><li>社内外の関係者を巻き込みながら、横断的に物事を推進できる方</li><li>曖昧な状況でも仮説を立て、自走しながら前に進められる方</li><li>ヘルスケア領域の事業に共感し、中長期で事業成長にコミットいただける方</li></ul><p><strong>【年収・給与】</strong></p><p>想定年収：800〜1200万円 ※経験、年齢、能力等を考慮の上、決定します。※管理監督者のため残業代支給なし</p><p>■昇給／年1回（1月）</p><p><strong>【諸手当・福利厚生】</strong></p><ul><li>通勤費支給：月額6万円まで</li><li>社会保険完備（健康・厚生年金・労災・雇用）</li><li>慶弔見舞金制度</li><li>資格手当：社労士 合格一時金300,000円＋月額資格手当6,000円</li><li>企業年金基金：加入期間や年齢に応じて、老齢給付金（年金）、脱退一時金、遺族給付金あり</li><li>総合福祉団体定期保険：従業員の万一に備えた遺族保障制度。保険料は会社が負担。</li><li>みんなの団体定期保険：低廉な保険料で、自身だけでなく家族も加入できる遺族保障制度</li><li>インセンティブ・プラン：株式給付信託（1回/1年、3月）一定の条件を満たす社員に対して、自社株式＋金銭報酬を支給</li><li>従業員持株会制度：自社株式を給与から自動積立で購入可能。毎月の拠出金額に12％の奨励金がつき、株式購入資金に充てられます。</li><li>嘱託再雇用制度：65歳以上かつ、必要要件を満たした場合に利用可</li><li>私服勤務</li><li>オフィス内禁煙</li><li>定期健康診断・人間ドック全額補助（一部オプション除く）</li><li>ライフサポート制度：妊活・不妊治療などライフステージに伴う手当の支給や休職制度あり</li><li>バリューカフェテリア®システム（選択型福利厚生制度）：毎年付与されるポイントをもとに、健康増進に関する商品と交換が可能（旅行券、家電、サプリメント、ウェアラブルデバイスなど）</li><li>社員紹介制度</li><li>各種研修制度：等級別研修のほか、自身のスキルアップ＆キャリアアップに必要な研修を選んで受講することができます</li><li>Valco（社員の休憩スペース）／バリューHR代々木ビル：お弁当の予約販売（一部費用会社負担）、コーヒー・フルーツの提供あり</li><li>産前産後休暇取得率100%</li><li>育児休業取得率：女性100%（2025年度実績）、男性も毎年取得実績あり。育児休業取得後の復職率：94.1％（2025年度実績）。時短勤務制度あり（小学校3年生の3月末まで）</li><li>介護休業：毎年取得実績あり。介護休業後の復職率：100%。時短勤務制度あり（要介護状態にある家族を介護する場合）</li><li>有給取得率：85.5%（2025年度実績）、有給平均取得日数：15.1日（2025年度実績）</li></ul><p><strong>【休日・休暇】</strong></p><ul><li>年間休日120日以上</li><li>完全週休2日制（土・日）</li><li>祝日</li><li>年末年始休暇（12/29～1/4）</li><li>年次有給休暇（半日・1時間単位での取得可）</li><li>特別休暇</li><li>ライフサポート休暇</li><li>産前産後休暇</li></ul><p><strong>【勤務時間】</strong></p><p>9：30～18：00（休憩1時間、時間帯の縛りはなく自由）</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">💰 800万円〜1200万円</span><span class="pill">🏥 健康経営優良法人ホワイト500認定</span><span class="pill">📈 東証プライム上場</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.valuehr.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが依田 稔 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
